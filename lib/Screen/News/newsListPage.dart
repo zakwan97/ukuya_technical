@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:ukuya_zakwan/Screen/News/newsListDetailPage.dart';
 import 'package:ukuya_zakwan/Screen/User/userListPage.dart';
-import 'package:ukuya_zakwan/webservice/api.dart';
+import 'package:ukuya_zakwan/services/api.dart';
 
 final API httpService = API();
 
@@ -71,8 +71,7 @@ class _NewsListPageState extends State<NewsListPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          const UserListPage()));
+                      builder: (context) => const UserListPage()));
             },
           )
         ],

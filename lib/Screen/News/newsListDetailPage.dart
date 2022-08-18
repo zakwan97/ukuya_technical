@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukuya_zakwan/webservice/api.dart';
+import 'package:ukuya_zakwan/services/api.dart';
 
 final API httpService = API();
 
@@ -111,7 +111,10 @@ class _NewsListDetailPageState extends State<NewsListDetailPage> {
                               children: <Widget>[
                                 ListTile(
                                   title: Text(
-                                    commentModel![index].name + ' email: ' + commentModel![index].email ?? "null",
+                                    commentModel![index].name +
+                                            ' email: ' +
+                                            commentModel![index].email ??
+                                        "null",
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                   subtitle: Text(

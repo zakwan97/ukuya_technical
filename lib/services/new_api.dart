@@ -1,12 +1,12 @@
 import 'dart:convert';
-
-// ignore: depend_on_referenced_packages
+import 'dart:developer';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:ukuya_zakwan/model/NewsListModel.dart';
-import 'package:ukuya_zakwan/model/commentModel.dart';
-import 'package:ukuya_zakwan/model/userModel.dart';
+import 'package:ukuya_zakwan/model/news_list_model.dart';
+import 'package:ukuya_zakwan/model/comment_model.dart';
+import 'package:ukuya_zakwan/model/user_model.dart';
 
-class API {
+class API extends GetxController {
   String mainUrl = "https://jsonplaceholder.typicode.com";
 
   Future getUrl(String url) async {
@@ -21,12 +21,10 @@ class API {
 
   Future<List> getNewsList() async {
     var url = '$mainUrl/posts';
-    // ignore: prefer_typing_uninitialized_variables
     var data;
     try {
       data = await getUrl(url);
     } catch (err) {
-      // ignore: avoid_print
       print(err);
     }
     return data.map<NewsListModel>((x) => NewsListModel.fromJson(x)).toList();

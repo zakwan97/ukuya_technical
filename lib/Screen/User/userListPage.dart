@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ukuya_zakwan/webservice/api.dart';
+import 'package:ukuya_zakwan/services/api.dart';
 
 final API httpService = API();
 
