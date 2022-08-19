@@ -6,18 +6,17 @@ class NewsSearchBar extends StatelessWidget {
   const NewsSearchBar({Key? key}) : super(key: key);
 
   @override
-  @override
   Widget build(BuildContext context) {
-    return GetBuilder<NewsListController>(builder: (outlet) {
+    return GetBuilder<NewsListController>(builder: (news) {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 4.2),
         height: 45,
         child: CupertinoSearchTextField(
           borderRadius: BorderRadius.circular(16),
           placeholder: 'Search News',
-          controller: outlet.searchController,
+          controller: news.searchController,
           onChanged: (val) {
-            outlet.settxtsearch(val);
+            news.settxtsearch(val);
           },
         ),
       );

@@ -6,6 +6,8 @@ import 'package:ukuya_zakwan/services/new_api.dart';
 class NewsListController extends GetxController {
   var newlist = <NewsListModel>[].obs;
   var searchnewlist = <NewsListModel>[].obs;
+  var newmodel;
+  var detail = <NewsListModel>[].obs;
   var isLoading = true;
   var isLoadingRegister = false;
 
@@ -46,6 +48,13 @@ class NewsListController extends GetxController {
   Future<void> getNewsList() async {
     final List<NewsListModel> response = await API().getNewsList();
     newlist.value = response;
+    isLoading = false;
+    update();
+  }
+
+  Future<void> getNewsDetails(String id) async {
+    final NewsListModel response = await API().getNewsDetail(id);
+    newmodel = response;
     isLoading = false;
     update();
   }

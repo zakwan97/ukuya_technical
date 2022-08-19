@@ -81,7 +81,29 @@ class _NewsListScreenState extends State<NewsListScreen> {
                                                   style: const TextStyle(
                                                       fontSize: 16),
                                                 ),
-                                                onTap: () {},
+                                                onTap: () {
+                                                  Get.toNamed(
+                                                          '/newsDetailScreen',
+                                                          arguments: n
+                                                              .newlist[index]
+                                                              .id)!
+                                                      .then((value) async {
+                                                    await newsController
+                                                        .getNewsDetails(n
+                                                            .newlist[index].id
+                                                            .toString());
+                                                    n.txtSearch.value = '';
+                                                    n.searchnewlist.clear();
+                                                    n.searchController.text =
+                                                        '';
+                                                  });
+                                                  // setState(() {
+                                                  //   Get.toNamed(
+                                                  //       '/newsDetailScreen',
+                                                  //       arguments: n
+                                                  //           .newlist[index].id);
+                                                  // });
+                                                },
                                               )
                                             ],
                                           ),
