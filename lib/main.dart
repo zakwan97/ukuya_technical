@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ukuya_zakwan/Screen/News/newsListPage.dart';
 import 'package:get/get.dart';
+import 'package:ukuya_zakwan/screen/news/news_list_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: const NewsListPage(title: "Test"),
+      home: const NewsListScreen(),
     );
   }
 }

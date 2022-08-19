@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ukuya_zakwan/model/news_list_model.dart';
@@ -19,7 +18,7 @@ class API extends GetxController {
     return json.decode(response.body);
   }
 
-  Future<List> getNewsList() async {
+  Future<List<NewsListModel>> getNewsList() async {
     var url = '$mainUrl/posts';
     var data;
     try {
