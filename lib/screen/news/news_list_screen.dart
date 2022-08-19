@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ukuya_zakwan/controller/news_list_controller.dart';
+import 'package:ukuya_zakwan/screen/news/news_search_bar.dart';
 
 class NewsListScreen extends StatefulWidget {
   const NewsListScreen({Key? key}) : super(key: key);
@@ -36,82 +36,104 @@ class _NewsListScreenState extends State<NewsListScreen> {
             )
           ],
         ),
-        body: Container(child: GetBuilder<NewsListController>(
-          builder: ((n) {
-            return newsController.isLoading
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Container(
-                    child: n.txtSearch.value.isEmpty
-                        ? ListView.builder(
-                            itemCount: n.newlist.length,
-                            itemBuilder: ((context, index) {
-                              return Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      ListTile(
-                                        title: Text(
-                                          n.newlist[index].title.toString(),
-                                          style: const TextStyle(fontSize: 16),
+        body: Center(
+          child: Column(
+            children: [
+              const NewsSearchBar(),
+              Expanded(
+                child: GetBuilder<NewsListController>(
+                  builder: ((n) {
+                    return newsController.isLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Container(
+                            child: n.txtSearch.value.isEmpty
+                                ? ListView.builder(
+                                    itemCount: n.newlist.length,
+                                    itemBuilder: ((context, index) {
+                                      return Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          side: BorderSide(
+                                            color: Colors.grey.shade300,
+                                          ),
                                         ),
-                                        subtitle: Text(
-                                          n.newlist[index].body ?? "null",
-                                          style: const TextStyle(fontSize: 16),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              ListTile(
+                                                title: Text(
+                                                  n.newlist[index].title
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                                subtitle: Text(
+                                                  n.newlist[index].body ??
+                                                      "null",
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                                onTap: () {},
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                        onTap: () {},
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }))
-                        : ListView.builder(
-                            itemCount: n.searchnewlist.length,
-                            itemBuilder: ((context, index) {
-                              return Card(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  side: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      ListTile(
-                                        title: Text(
-                                          n.searchnewlist[index].title
-                                              .toString(),
-                                          style: const TextStyle(fontSize: 16),
+                                      );
+                                    }))
+                                : ListView.builder(
+                                    itemCount: n.searchnewlist.length,
+                                    itemBuilder: ((context, index) {
+                                      return Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          side: BorderSide(
+                                            color: Colors.grey.shade300,
+                                          ),
                                         ),
-                                        subtitle: Text(
-                                          n.searchnewlist[index].body ?? "null",
-                                          style: const TextStyle(fontSize: 16),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              ListTile(
+                                                title: Text(
+                                                  n.searchnewlist[index].title
+                                                      .toString(),
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                                subtitle: Text(
+                                                  n.searchnewlist[index].body ??
+                                                      "null",
+                                                  style: const TextStyle(
+                                                      fontSize: 16),
+                                                ),
+                                                onTap: () {},
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                        onTap: () {},
-                                      )
-                                    ],
+                                      );
+                                    }),
                                   ),
-                                ),
-                              );
-                            })));
-          }),
-        )));
+                          );
+                  }),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
